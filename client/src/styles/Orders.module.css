@@ -1,0 +1,32 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+
+.title{
+    font-size: 30px;
+    text-align: center;
+}
+
+.order{
+
+}
+
+.order {
+
+    margin-top: 50px;
+}
+
+.dish h3{
+
+    border: 1px solid #5CDB95;
+    border-radius: 5px;
+}
+
+.doneButton {
+
+    background-color: #5CDB95;
+    font-size: 17px;
+}
+

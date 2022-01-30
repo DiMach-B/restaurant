@@ -1,0 +1,77 @@
+.main{
+    display: flex;
+    justify-content: center;
+}
+
+.createDish{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.input input {
+    padding-left: 10px;
+    font-size: 20px;
+
+}
+
+.input button {
+    /* float: right; */
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.input input:first-child {
+
+    margin-right: 20px;
+}
+
+.title{
+    font-size: 30px;
+    text-align: center;
+}
+
+.itemProduct {
+
+    margin-left: 30px;
+}
+
+.itemProductad {
+    margin-left: 0;
+}
+
+.itemProduct h3{
+
+    border: 1px solid #5CDB95;
+    margin: 0;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+.itemProductadd h3{
+
+    border: 1px solid #5CDB95;
+    margin: 0;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+
+.addButton {
+
+    background-color: #5CDB95;
+    font-size: 17px;
+}
+
+.delButton {
+
+    background-color: #cf4b4b; 
+    font-size: 17px;
+}
+
+.createButton {
+margin: 10px 110px 0 0;
+font-weight: 600;
+border: 3px solid black;
+border-radius: 5px;
+}

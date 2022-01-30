@@ -1,0 +1,45 @@
+Index: src/main/java/com/example/rest/Mappers/OrderMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rest.Mappers;\r\n\r\nimport com.example.rest.DAO.Order;\r\nimport com.example.rest.DTO.OrderDTO;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class OrderMapper implements Mapper<OrderDTO, Order>{\r\n\r\n    private final DishMapper dishMapper;\r\n    private final UserMapper userMapper;\r\n\r\n    @Override\r\n    public OrderDTO mapToDto(Order entity) {\r\n        return OrderDTO.builder()\r\n                .id(entity.getId())\r\n                .user(userMapper.mapToDto(entity.getUser()))\r\n                .dish(dishMapper.mapToDto(entity.getDishes()))\r\n                .date(entity.getDate())\r\n                .status(entity.getStatus())\r\n                .build();\r\n    }\r\n\r\n    @Override\r\n    public Order mapToEntity(OrderDTO dto) {\r\n        return Order.builder()\r\n                .id(dto.getId())\r\n                .user(userMapper.mapToEntity(dto.getUser()))\r\n                .dishes(dishMapper.mapToEntity(dto.getDish()))\r\n                .date(dto.getDate())\r\n                .status(dto.getStatus())\r\n                .build();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/example/rest/Mappers/OrderMapper.java	(revision e506b2d66a08070b53576f2cf228a09c44ae363c)
++++ src/main/java/com/example/rest/Mappers/OrderMapper.java	(date 1641719075727)
+@@ -17,7 +17,7 @@
+         return OrderDTO.builder()
+                 .id(entity.getId())
+                 .user(userMapper.mapToDto(entity.getUser()))
+-                .dish(dishMapper.mapToDto(entity.getDishes()))
++                .dishes(dishMapper.mapToDto(entity.getDishes()))
+                 .date(entity.getDate())
+                 .status(entity.getStatus())
+                 .build();
+@@ -28,7 +28,7 @@
+         return Order.builder()
+                 .id(dto.getId())
+                 .user(userMapper.mapToEntity(dto.getUser()))
+-                .dishes(dishMapper.mapToEntity(dto.getDish()))
++                .dishes(dishMapper.mapToEntity(dto.getDishes()))
+                 .date(dto.getDate())
+                 .status(dto.getStatus())
+                 .build();
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server.servlet.context-path=/rest\r\n\r\nspring.datasource.driver-class-name=org.postgresql.Driver\r\nspring.datasource.url=jdbc:postgresql://localhost:5432/rest\r\nspring.datasource.username=postgres\r\nspring.datasource.password=1234\r\nspring.jpa.hibernate.ddl-auto=update\r\nspring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect\r\nspring.main.banner-mode=off\r\nspring.jackson.deserialization.fail-on-unknown-properties=true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1251
+===================================================================
+--- src/main/resources/application.properties	(revision e506b2d66a08070b53576f2cf228a09c44ae363c)
++++ src/main/resources/application.properties	(date 1641719075753)
+@@ -3,7 +3,7 @@
+ spring.datasource.driver-class-name=org.postgresql.Driver
+ spring.datasource.url=jdbc:postgresql://localhost:5432/rest
+ spring.datasource.username=postgres
+-spring.datasource.password=1234
++spring.datasource.password=qwer
+ spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect
+ spring.main.banner-mode=off

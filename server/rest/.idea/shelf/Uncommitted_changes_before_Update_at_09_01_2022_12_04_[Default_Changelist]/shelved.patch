@@ -1,0 +1,75 @@
+Index: src/main/java/com/example/rest/Mappers/OrderMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rest.Mappers;\r\n\r\nimport com.example.rest.DAO.Order;\r\nimport com.example.rest.DTO.OrderDTO;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\n@RequiredArgsConstructor\r\npublic class OrderMapper implements Mapper<OrderDTO, Order>{\r\n\r\n    private final DishMapper dishMapper;\r\n    private final UserMapper userMapper;\r\n\r\n    @Override\r\n    public OrderDTO mapToDto(Order entity) {\r\n        return OrderDTO.builder()\r\n                .id(entity.getId())\r\n                .user(userMapper.mapToDto(entity.getUser()))\r\n                .dish(dishMapper.mapToDto(entity.getDishes()))\r\n                .date(entity.getDate())\r\n                .status(entity.getStatus())\r\n                .build();\r\n    }\r\n\r\n    @Override\r\n    public Order mapToEntity(OrderDTO dto) {\r\n        return Order.builder()\r\n                .id(dto.getId())\r\n                .user(userMapper.mapToEntity(dto.getUser()))\r\n                .dishes(dishMapper.mapToEntity(dto.getDish()))\r\n                .date(dto.getDate())\r\n                .status(dto.getStatus())\r\n                .build();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/example/rest/Mappers/OrderMapper.java	(revision 6587b51d5f22e3b0a875672cc4aaac699c707014)
++++ src/main/java/com/example/rest/Mappers/OrderMapper.java	(date 1641716731578)
+@@ -17,7 +17,7 @@
+         return OrderDTO.builder()
+                 .id(entity.getId())
+                 .user(userMapper.mapToDto(entity.getUser()))
+-                .dish(dishMapper.mapToDto(entity.getDishes()))
++                .dishes(dishMapper.mapToDto(entity.getDishes()))
+                 .date(entity.getDate())
+                 .status(entity.getStatus())
+                 .build();
+@@ -28,7 +28,7 @@
+         return Order.builder()
+                 .id(dto.getId())
+                 .user(userMapper.mapToEntity(dto.getUser()))
+-                .dishes(dishMapper.mapToEntity(dto.getDish()))
++                .dishes(dishMapper.mapToEntity(dto.getDishes()))
+                 .date(dto.getDate())
+                 .status(dto.getStatus())
+                 .build();
+Index: src/main/java/com/example/rest/DTO/OrderDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.rest.DTO;\r\n\r\nimport com.example.rest.DAO.User;\r\nimport lombok.AllArgsConstructor;\r\nimport lombok.Builder;\r\nimport lombok.Data;\r\nimport lombok.NoArgsConstructor;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n\r\n@Data\r\n@Builder\r\n@AllArgsConstructor\r\n@NoArgsConstructor\r\npublic class OrderDTO implements DTO{\r\n    private Integer id;\r\n    private UserDTO user;\r\n    private List<DishDTO> dish;\r\n    private Date date;\r\n    private String status;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/example/rest/DTO/OrderDTO.java	(revision 6587b51d5f22e3b0a875672cc4aaac699c707014)
++++ src/main/java/com/example/rest/DTO/OrderDTO.java	(date 1641716708183)
+@@ -17,7 +17,7 @@
+ public class OrderDTO implements DTO{
+     private Integer id;
+     private UserDTO user;
+-    private List<DishDTO> dish;
++    private List<DishDTO> dishes;
+     private Date date;
+     private String status;
+ }
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server.servlet.context-path=/rest\r\n\r\nspring.datasource.driver-class-name=org.postgresql.Driver\r\nspring.datasource.url=jdbc:postgresql://localhost:5432/rest\r\nspring.datasource.username=postgres\r\nspring.datasource.password=1234\r\nspring.jpa.hibernate.ddl-auto=update\r\nspring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect\r\nspring.main.banner-mode=off\r\nspring.jackson.deserialization.fail-on-unknown-properties=true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1251
+===================================================================
+--- src/main/resources/application.properties	(revision 6587b51d5f22e3b0a875672cc4aaac699c707014)
++++ src/main/resources/application.properties	(date 1641707726767)
+@@ -3,7 +3,7 @@
+ spring.datasource.driver-class-name=org.postgresql.Driver
+ spring.datasource.url=jdbc:postgresql://localhost:5432/rest
+ spring.datasource.username=postgres
+-spring.datasource.password=1234
++spring.datasource.password=qwer
+ spring.jpa.hibernate.ddl-auto=update
+ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL82Dialect
+ spring.main.banner-mode=off
+Index: src/main/java/com/example/rest/DAO/DAOEntity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/example/rest/DAO/DAOEntity.java	(date 1641716387246)
++++ src/main/java/com/example/rest/DAO/DAOEntity.java	(date 1641716387246)
+@@ -0,0 +1,4 @@
++package com.example.rest.DAO;
++
++public interface DAOEntity {
++}

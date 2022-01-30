@@ -1,0 +1,31 @@
+.navBar {
+
+    width: 100%;
+    background-color:  #5CDB95;
+    height: 45px;
+
+
+}
+
+.menu {
+
+    display: flex;
+}
+
+.menu button {
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: 25px;
+}
+
+.linkBlock {
+
+    color: #05386B;
+    font-size: 20px;
+    margin:  10px 0 0 25px;
+    font-weight: 700;
+    
+}
+
+.link { text-decoration: none; }
+.link:hover { text-decoration: underline; }
